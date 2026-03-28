@@ -1,0 +1,28 @@
+SELECT 
+  trips.trip_id,
+  stations.name AS station_name
+FROM 
+  `bigquery-public-data.austin_bikeshare.bikeshare_trips` AS trips
+LEFT JOIN   
+  `bigquery-public-data.austin_bikeshare.bikeshare_stations` AS stations
+ON 
+  trips.start_station_id = stations.station_id
+LIMIT 10
+
+###El paso a paso del LEFT JOIN:
+
+1. FROM tabla_de_viajes AS trips
+"Esta es mi carpeta IZQUIERDA (la principal). Pase lo que pase, N
+O quiero que me borres ningún viaje. Si el viaje existió, ponlo en mi lista final".
+
+2. LEFT JOIN tabla_de_estaciones AS stations
+"Ahora, asómate a la carpeta de la DERECHA (Estaciones). Si encuentras el nombre de 
+la estación que ando buscando, ¡pégalo!".
+
+3. ON trips.start_station_id = stations.station_id
+"Pero ojo: si buscas el ID del viaje en la carpeta de Estaciones y NO EXISTE 
+(porque es una estación nueva o hubo un error de dedo)... ¡No me borres el viaje!".
+
+4. El resultado final:
+"Como no encontraste el nombre en la carpeta de la derecha, en la columna de station_name 
+simplemente ponme un NULL (o sea, déjalo vacío). Pero el ID del viaje y de la bici ahí déjamelos, que no se pierdan".
