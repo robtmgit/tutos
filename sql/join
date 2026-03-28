@@ -1,0 +1,11 @@
+SELECT 
+  trips.trip_id,         -- 1. "De la hoja de Viajes, dame el ID del viaje"
+  trips.bike_id,         -- 2. "De la hoja de Viajes, dame el ID de la bici"
+  stations.name AS station_name -- 3. "De la otra hoja (Estaciones), dame el nombre"
+FROM 
+  `tabla_de_viajes` AS trips -- 4. "Mi hoja principal es la de Viajes (le digo 'trips' de cariño)"
+INNER JOIN   
+  `tabla_de_estaciones` AS stations -- 5. "Pégala con la hoja de Estaciones ('stations')"
+ON 
+  trips.start_station_id = stations.station_id -- 6. "¡OJO! Júntalas SOLO donde el ID coincida"
+LIMIT 10 -- 7. "Solo enséñame los primeros 10 resultados"
