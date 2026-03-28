@@ -1,0 +1,14 @@
+###El paso a paso del RIGHT JOIN:
+1. FROM tabla_de_viajes AS trips
+"Esta es mi carpeta de la izquierda, pero ahora no es la jefa".
+
+2. RIGHT JOIN tabla_de_estaciones AS stations
+"Esta es mi carpeta DERECHA y es la MERA MERA. Quiero ver TODAS las estaciones que existen en mi catálogo, ¡todas!".
+
+3. ON trips.start_station_id = stations.station_id
+"Busca qué viajes se hicieron en cada estación. Pero ojo: si hay una estación (como una que apenas van a inaugurar) 
+que NO TIENE NINGÚN VIAJE TODAVÍA... ¡No me borres la estación!".
+
+4. El resultado final:
+"Como la estación existe en mi catálogo pero nadie la ha usado, 
+en las columnas de trip_id y bike_id simplemente ponme un NULL. Lo importante es que mi lista de estaciones salga completa".
